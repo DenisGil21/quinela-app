@@ -3,22 +3,74 @@
         Apostar en partido
     </div>
     <div class="card-body">
-        <table class="table table-borderless">
-            <thead>
-                <tr>
-                    <th scope="col">Mexico</th>
-                    <th scope="col">vs</th>
-                    <th scope="col">Argentina</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>0</td>
-                    <td>:</td>
-                    <td>0</td>
-                </tr>
-            </tbody>
-        </table>
+        <form [formGroup]="apuestaForm">
+            <div class="row">
+                <div class="col-md-5 col-sm-12">
+                    <h4>Mexico</h4>
+                    <div>1</div>
+                    <select class="form-select" aria-label="Default select example" formControlName="equipo1">
+                        <option value="" selected>Seleccionar goles</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                </div>
+                <div class="col-md-2 col-sm-12">
+                    <h4>vs</h4>
+                </div>
+                <div class="col-md-5 col-sm-12">
+                    <h4>Argentina</h4>
+                    <div>1</div>
+                    <select class="form-select" aria-label="Default select example" formControlName="equipo2">
+                        <option value="" selected>Seleccionar goles</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12 mb-2">
+                    <b>Seleccionar un ganador:</b>
+                </div>
+                <div class="col-md-5">
+                    <div class="mb-2">
+                        <input type="radio" class="btn-check" value="Mexico" formControlName="ganador" id="btn-check-1-outlined"
+                            autocomplete="off">
+                        <label class="btn btn-outline-primary" for="btn-check-1-outlined">Mexico</label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="mb-2">
+                        <input type="radio" class="btn-check" value="Empate" id="btn-check-2-outlined" formControlName="ganador"
+                            autocomplete="off">
+                        <label class="btn btn-outline-primary" for="btn-check-2-outlined">Empate</label>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="mb-2">
+                        <input type="radio" class="btn-check" value="Argentina" formControlName="ganador" id="btn-check-3-outlined"
+                            autocomplete="off">
+                        <label class="btn btn-outline-primary" for="btn-check-3-outlined">Argentina</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <button class="btn btn-outline-success w-50" (click)="apostar()">Guardar apuesta</button>
+                </div>
+            </div>
+        </form>
     </div>
     <div class="card-footer text-muted">
         12/11/22 20:00
