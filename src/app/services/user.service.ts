@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Login } from '../interfaces/usuario.interface';
+import { Login, LoginForm } from '../interfaces/usuario.interface';
 import { Usuario } from '../models/usuario.model';
 
 const url = environment.base_url;
@@ -17,11 +17,9 @@ export class UserService {
   
   constructor(private http: HttpClient) { }
 
-  login(email:string, password:string): Observable<Login> {
-    return this.http.post<Login>(`${url}/auth/login`,{
-      email, 
-      password
-    }).pipe(
+  login(loginForm:LoginForm): Observable<Login> {    
+    return this.http.post<Login>(`${url}/auth/login`,loginForm
+    ).pipe(
       tap((resp) => {
         localStorage.setItem('token', resp.token);
       })
@@ -30,7 +28,7 @@ export class UserService {
 
 
   validarToken(): Observable<boolean> {
-    return this.http.get<Login>(`${url}/auth/renew`
+    return this.http.get<Login>(`${url}/auth/refresh`
     ).pipe(
       map(resp => {
         const { email, puntaje } = resp.usuario;
