@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (resp) => {
           this.cargando = false;
-          console.log(resp);
           this.router.navigateByUrl('dashboard')
         },
         error: (err) => {
